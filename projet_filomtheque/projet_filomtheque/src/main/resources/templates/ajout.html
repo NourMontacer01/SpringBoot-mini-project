@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Saisir un nouveau Film</h1>
+    <form action="/film/add" method="post">
+        <p>
+            <label for="titre" class="form-label">Titre du film :</label>
+            <input type="text" name="titre" id="titre" class="form-control" required>
+        </p>
+        <p>
+            <label for="description" class="form-label">Description :</label>
+            <textarea id="description" rows="5" class="form-control" name="description"></textarea>
+        </p>
+        <p>
+            <label for="annee" class="form-label">Anneé parution :</label>
+            <input type="number" min="1950"  id="annee" class="form-control" name="anneeparution" required>
+        </p>
+        <p>
+            <label for="categorie" class="form-label">Categorie :</label>
+            <select name="categorie" id="categorie" class="form-select">
+                <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.nom}">Volvo</option>
+            </select>
+        </p>
+        <p><input type="submit" class="btn btn-outline-primary" value="Ajouter"></p>
+    </form>
+</div>
+</body>
+</html>
